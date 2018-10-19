@@ -31,7 +31,7 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
         else:
             continue
 
-    # adding nestes list with a list for each question to store its Answers
+    # adding nested list with a list for each question to store its Answers
     # like if its 4 questions it'll be [[],[],[],[]]
     list = []
     for i in range(len(resultsDict["ratingquestion"])):
@@ -57,3 +57,7 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
                             continue;
                         else:
                             resultsDict[name][j].append(row[j+3])
+
+#number of participants
+print "Number of people participating is",
+print len(resultsDict["submitted_at"])
