@@ -30,3 +30,13 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
                 resultsDict["ratingquestion"].append(i)
         else:
             continue
+
+    for row in csv_reader:
+        for name in resultTitles:
+            #if the sumitted time is empty skipped that person
+            if (row[2] == ""):
+                continue;
+            else:
+
+
+                
