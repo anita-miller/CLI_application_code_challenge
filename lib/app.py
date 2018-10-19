@@ -15,3 +15,11 @@ with open(path + surveryFileName + ".csv", 'rb') as csvfile:
         for name in csv_reader.fieldnames:
             surveyDict[name].append(row[name])
         line_count +=1
+
+
+# reading the results file
+with open(path + resultFileName + ".csv", 'rb') as csvfile:
+    resultTitles = ["email", "employee_id", "submitted_at",
+    "answers", "ratingquestion"]
+    csv_reader = csv.reader(csvfile, delimiter=',')
+    resultsDict = {name: [] for name in resultTitles}
