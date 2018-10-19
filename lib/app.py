@@ -23,3 +23,10 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
     "answers", "ratingquestion"]
     csv_reader = csv.reader(csvfile, delimiter=',')
     resultsDict = {name: [] for name in resultTitles}
+
+    # store the number of questions that are rating questions
+    for i in range(line_count):
+        if (surveyDict["type"][i] == "ratingquestion"):
+                resultsDict["ratingquestion"].append(i)
+        else:
+            continue
