@@ -37,6 +37,9 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
             if (row[2] == ""):
                 continue;
             else:
-
-
-                
+                if (name == "email"):
+                    resultsDict[name].append(row[0])
+                elif (name == "employee_id"):
+                    resultsDict[name].append(row[1])
+                elif (name == "submitted_at"):
+                    resultsDict[name].append(row[2])
