@@ -53,6 +53,7 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
                 elif (name == "answers"):
                     for j in range(len(resultsDict["ratingquestion"])):
                         # plus 3 beacuse answers start at index 3
+                        #if the answer was empty skip it
                         if (row[j+3] == ""):
                             continue;
                         else:
