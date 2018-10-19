@@ -31,6 +31,13 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
         else:
             continue
 
+    # adding nestes list with a list for each question to store its Answers
+    # like if its 4 questions it'll be [[],[],[],[]]
+    list = []
+    for i in range(len(resultsDict["ratingquestion"])):
+        list.append([])
+    resultsDict["answers"] = list
+
     for row in csv_reader:
         for name in resultTitles:
             #if the sumitted time is empty skipped that person
@@ -43,3 +50,10 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
                     resultsDict[name].append(row[1])
                 elif (name == "submitted_at"):
                     resultsDict[name].append(row[2])
+                elif (name == "answers"):
+                    for j in range(len(resultsDict["ratingquestion"])):
+                        # plus 3 beacuse answers start at index 3
+                        if (row[j+3] == ""):
+                            continue;
+                        else:
+                            resultsDict[name][j].append(row[j+3])
