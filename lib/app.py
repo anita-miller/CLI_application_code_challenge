@@ -61,3 +61,15 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
 #number of participants
 print "Number of people participating is",
 print len(resultsDict["submitted_at"])
+
+if len(resultsDict["submitted_at"]) !=0:
+    for k in range(len(resultsDict["answers"])):
+        sum = 0
+        for i in resultsDict["answers"][k]:
+            sum += int(i)
+        print "The average for the question number",
+        print k+1,
+        print "rating question is",
+        print float(sum)/len(resultsDict["answers"][k])
+else :
+    print "didnt find any submitted answers"
