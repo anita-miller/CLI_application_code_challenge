@@ -1,13 +1,13 @@
 import csv
 
-surveryFileName = raw_input("Enter survery file name here: ")
-resultFileName = raw_input("Enter results file name here: ")
+surveryFileName = input("Enter survery file name here: ")
+resultFileName = input("Enter results file name here: ")
 
 #change according to the path that its placed at the time of running the code
 path = "/Users/anitanaseri/desktop/CLI_application_code_challenge/example-data/"
 
 #reading the survey file and stroing it in dictionary
-with open(path + surveryFileName + ".csv", 'rb') as csvfile:
+with open(path + surveryFileName + ".csv", 'r') as csvfile:
     csv_reader = csv.DictReader(csvfile, delimiter=',')
     surveyDict = {name: [] for name in csv_reader.fieldnames}
     line_count = 0
@@ -18,7 +18,7 @@ with open(path + surveryFileName + ".csv", 'rb') as csvfile:
 
 
 # reading the results file
-with open(path + resultFileName + ".csv", 'rb') as csvfile:
+with open(path + resultFileName + ".csv", 'r') as csvfile:
     resultTitles = ["email", "employee_id", "submitted_at",
     "answers", "ratingquestion"]
     csv_reader = csv.reader(csvfile, delimiter=',')
@@ -60,21 +60,21 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
                             resultsDict[name][j].append(row[j+3])
 
 #number of participants
-print "Number of people participating is",
-print len(resultsDict["submitted_at"])
+print ("Number of people participating is", end=" "),
+print (len(resultsDict["submitted_at"]))
 
 #The participation percentage
-print "Participation percentage is %",
-print (len(resultsDict["submitted_at"])/line_count-1)*100
+print ("Participation percentage is %", end=" "),
+print ((len(resultsDict["submitted_at"])/line_count)*100)
 
 if len(resultsDict["submitted_at"]) !=0:
     for k in range(len(resultsDict["answers"])):
         sum = 0
         for i in resultsDict["answers"][k]:
             sum += int(i)
-        print "The average for the question number",
-        print k+1,
-        print "rating question is",
-        print float(sum)/len(resultsDict["answers"][k])
+        print ("The average for the question number", end=" ")
+        print (k+1, end=" ")
+        print ("rating question is", end=" ")
+        print (float(sum)/len(resultsDict["answers"][k]))
 else :
-    print "didnt find any submitted answers"
+    print ("didnt find any submitted answers")
