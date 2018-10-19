@@ -63,6 +63,10 @@ with open(path + resultFileName + ".csv", 'rb') as csvfile:
 print "Number of people participating is",
 print len(resultsDict["submitted_at"])
 
+#The participation percentage
+print "Participation percentage is %",
+print (len(resultsDict["submitted_at"])/line_count-1)*100
+
 if len(resultsDict["submitted_at"]) !=0:
     for k in range(len(resultsDict["answers"])):
         sum = 0
